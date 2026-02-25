@@ -67,13 +67,13 @@ Total Loss =
 
 Clone the repository:
 
-git clone https://github.com/yourusername/FCA-GAN.git
+git clone https://github.com/shubhamsnehil07/FCA-GAN.git
 
 cd FCA-GAN
 
 Install dependencies:
 
-pip install -r requirements.txt
+```pip install -r requirements.txt```
 
 ---
 
