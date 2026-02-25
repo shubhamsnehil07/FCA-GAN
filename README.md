@@ -110,6 +110,6 @@ Install dependencies:
 
 ## Author
 
-Shubham Snehil
+Shubham Snehil  
 MSc Computer Science  
 National Institute of Technology, Trichy
