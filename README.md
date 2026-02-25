@@ -13,7 +13,7 @@ The model leverages both spatial and frequency information to improve texture co
 ---
 
 ## Project Structure
-
+```
 FCA-GAN/
 │
 ├── models/
@@ -34,7 +34,7 @@ FCA-GAN/
 ├── inference.py
 ├── config.py
 └── requirements.txt
-
+```
 ## Key Features
 
 - Attention-guided generator architecture
