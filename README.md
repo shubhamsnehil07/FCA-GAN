@@ -74,7 +74,7 @@ Perceptual Loss
 Frequency Consistency Loss
 
 Installation
-git clone https://github.com/yourusername/FCA-GAN.git
+git clone https://github.com/shubhamsnehil07/FCA-GAN.git
 cd FCA-GAN
 pip install -r requirements.txt
 Train
