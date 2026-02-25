@@ -12,6 +12,29 @@ The model leverages both spatial and frequency information to improve texture co
 
 ---
 
+## Project Structure
+
+FCA-GAN/
+│
+├── models/
+│   ├── generator.py
+│   ├── discriminator.py
+│   ├── attention.py
+│   ├── frequency.py
+│
+├── losses/
+│   ├── adversarial.py
+│   ├── perceptual.py
+│   ├── frequency_loss.py
+│
+├── dataset/
+│   ├── dataloader.py
+│
+├── train.py
+├── inference.py
+├── config.py
+└── requirements.txt
+
 ## Key Features
 
 - Attention-guided generator architecture
