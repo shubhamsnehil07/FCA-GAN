@@ -79,13 +79,13 @@ Install dependencies:
 
 ## Training
 
-python train.py
+```python train.py```
 
 ---
 
 ## Inference
 
-python inference.py --image path/to/grayscale.jpg
+```python inference.py --image path/to/grayscale.jpg```
 
 ---
 
@@ -110,6 +110,6 @@ python inference.py --image path/to/grayscale.jpg
 
 ## Author
 
-Shubham  
+Shubham Snehil
 MSc Computer Science  
 National Institute of Technology, Trichy
