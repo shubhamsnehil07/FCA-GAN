@@ -1,26 +1,28 @@
 import os
-import cv2
+import glob
+import numpy as np
 import torch
+from PIL import Image
 from torch.utils.data import Dataset
 
-
 class ColorizationDataset(Dataset):
-    def __init__(self, image_dir):
-        self.image_dir = image_dir
-        self.images = os.listdir(image_dir)
+    def __init__(self, root_dir, transform=None, max_samples=None, seed=None):
+        extensions = ['*.png', '*.jpg', '*.jpeg', '*.bmp', '*.tiff']
+        self.image_paths = []
+        for ext in extensions:
+            self.image_paths.extend(glob.glob(os.path.join(root_dir, ext)))
+        self.image_paths = sorted(list(set(self.image_paths)))
 
-    def __len__(self):
-        return len(self.images)
+        if max_samples and max_samples < len(self.image_paths):
+            rng = np.random.default_rng(seed)
+            indices = rng.permutation(len(self.image_paths))[:max_samples]
+            self.image_paths = [self.image_paths[i] for i in indices]
+        self.transform = transform
+
+    def __len__(self): return len(self.image_paths)
 
     def __getitem__(self, idx):
-        img_path = os.path.join(self.image_dir, self.images[idx])
-        img = cv2.imread(img_path)
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-
-        L = img[:, :, 0:1] / 50. - 1.
-        ab = img[:, :, 1:] / 128.
-
-        L = torch.tensor(L).permute(2, 0, 1).float()
-        ab = torch.tensor(ab).permute(2, 0, 1).float()
-
-        return L, ab
+        img = Image.open(self.image_paths[idx]).convert('RGB')
+        if self.transform: img = self.transform(img)
+        gray = img.mean(dim=0, keepdim=True)
+        return gray, img
